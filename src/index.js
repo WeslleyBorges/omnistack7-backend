@@ -17,7 +17,10 @@ app.use((req, res, next) => {
 })
 
 app.use(cors())
-app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads', 'resized')))
+
+const picturesPath = path.resolve(__dirname, '..', 'uploads', 'resized')
+app.use(express.static(picturesPath))
+
 app.use(require('./routes'))
 
 server.listen(process.env.PORT || 5000)
