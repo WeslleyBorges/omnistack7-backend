@@ -14,6 +14,6 @@ routes.get('/', (req, res) => {
 routes.get('/posts', PostControler.index)
 routes.post('/posts', upload.single('image'), PostControler.store)
 
-routes.get('/posts/:id/like', LikeController.store)
+routes.post('/posts/:id/like', LikeController.store)
 
 module.exports = routes
