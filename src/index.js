@@ -7,11 +7,10 @@ const app = express()
 
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
-const mongooseRemoteConnection = 'mongodb+srv://admin:admin123@cluster0-4ek76.mongodb.net/test?retryWrites=true&w=majority'
 const mongooseLocalConnection = 'mongodb://localhost/instarocket'
 const connectionOptions = {useNewUrlParser: true, useUnifiedTopology: true}
 
-mongoose.connect(mongooseLocalConnection || mongooseRemoteConnection, connectionOptions)
+mongoose.connect(process.env.MONGODB_ATLAS_URI || process.env.MONGODB_URI || mongooseLocalConnection, connectionOptions)
 
 app.use((req, res, next) => {
   req.io = io
