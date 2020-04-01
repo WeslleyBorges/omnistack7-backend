@@ -11,6 +11,8 @@ module.exports = {
 
     req.io.emit('like', post)
 
+    console.log(`POST ${req.params.id} LIKED!!`)
+
     return res.json(post)
   }
 }
